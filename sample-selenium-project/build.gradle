@@ -1,0 +1,16 @@
+group 'Yohanan'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.seleniumhq.selenium:selenium-server:3.13.0'
+    compile 'org.testng:testng:6.14.3'
+}
