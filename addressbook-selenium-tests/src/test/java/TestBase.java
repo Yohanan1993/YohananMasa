@@ -139,4 +139,22 @@ public class TestBase {
     protected void returnToHomePage() {
         driver.findElement(By.linkText("home")).click();
     }
+
+    public void confirmAlert() {
+//        String alertText = driver.switchTo().alert().getText();
+//        System.out.println(alertText);
+        driver.switchTo().alert().accept();
+    }
+
+    public void initContactDeletion() {
+        driver.findElement(By.xpath("//*[@value='Delete']")).click();
+    }
+
+    public void selectContact() {
+        driver.findElement(By.xpath("//*[@name='selected[]']")).click();
+    }
+
+    public void openHomePage() {
+        driver.findElement(By.xpath("//*[@href='./']")).click();
+    }
 }
