@@ -13,12 +13,12 @@ public class GroupCreationTests extends TestBase{
   @Test
   public void testGroupCreation()  {
     openGroupsPage();
-    int before= driver.findElements(By.name("selected[]")).size();
+    int before = getGroupsCount();
     initGroupCreation();
     fillGroupForm("Yohanan", "header", "footer");
     submitGroupCreation();
     returnToGroupPage();
-    int after = driver.findElements(By.name("selected[]")).size();
+    int after = getGroupsCount();
 
     Assert.assertEquals(after, before+1);
   }
@@ -26,10 +26,7 @@ public class GroupCreationTests extends TestBase{
   @Test
   public void testGroupCreationEmptyFields()  {
     openGroupsPage();
-    initGroupCreation();
-    fillGroupForm("", "", "");
-    submitGroupCreation();
-    returnToGroupPage();
+    createGroup();
   }
 
   @Test

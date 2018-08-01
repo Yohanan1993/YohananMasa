@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ContactCreationTests extends TestBase{
@@ -6,10 +7,13 @@ public class ContactCreationTests extends TestBase{
     @Test
     public void testContactCreation(){
 
-        initContactCreation();
-        fillContactForm("Vasily", "Ivanov", "Tel-Aviv", "123456789", "aa@dddd.com");
-        confirmContactCreation();
-        returnToHomePage();
+        int beforCreation = getContactsCount();
+
+        createContact();
+
+        int afterCreation = getContactsCount();
+
+        Assert.assertEquals(beforCreation, afterCreation +1);
     }
 
 

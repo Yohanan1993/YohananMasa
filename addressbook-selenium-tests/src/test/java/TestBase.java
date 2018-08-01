@@ -72,7 +72,7 @@ public class TestBase {
       driver.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
-    private boolean isElementPresent(By by) {
+    public boolean isElementPresent(By by) {
       try {
         driver.findElement(by);
         return true;
@@ -81,7 +81,15 @@ public class TestBase {
       }
     }
 
-    private boolean isAlertPresent() {
+    public boolean isGroupPresent(){
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public boolean isContactPresent(){
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public boolean isAlertPresent() {
       try {
         driver.switchTo().alert();
         return true;
@@ -156,5 +164,44 @@ public class TestBase {
 
     public void openHomePage() {
         driver.findElement(By.xpath("//*[@href='./']")).click();
+    }
+
+    public int getGroupsCount() {
+      return driver.findElements(By.name("selected[]")).size();
+    }
+
+    protected int getContactsCount() {
+        return driver.findElements(By.cssSelector("[name='selected[]']")).size();
+
+    }
+
+    public void selectGroupByIndex(int index) {
+        driver.findElements(By.name("selected[]")).get(index).click();
+    }
+
+    public void selectContactByIndex(int index) {
+        driver.findElements(By.xpath("//*[@name='selected[]']")).get(index).click();
+    }
+
+    public void clickOnUpdateButton() {
+        driver.findElement(By.xpath("//input[@value='Update']")).click();
+    }
+
+    public void initContactModification() {
+        driver.findElement(By.xpath("//img[@title='Edit']")).click();
+    }
+
+    public void createGroup() {
+        initGroupCreation();
+        fillGroupForm("", "", "");
+        submitGroupCreation();
+        returnToGroupPage();
+    }
+
+    public void createContact() {
+        initContactCreation();
+        fillContactForm("Vasily", "Ivanov", "Tel-Aviv", "123456789", "aa@dddd.com");
+        confirmContactCreation();
+        returnToHomePage();
     }
 }

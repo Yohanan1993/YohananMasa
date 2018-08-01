@@ -12,17 +12,29 @@ public class ContactDeletionTests extends TestBase {
     }
     @Test
     public void deletionContactTest() {
-        int before = getContactCount();
+        int before = getContactsCount();
         selectContact();
         initContactDeletion();
         confirmAlert();
-        int after = getContactCount();
+        int after = getContactsCount();
         System.out.println("before: "+ before + " " + "after: " + after);
         Assert.assertEquals(after, before -1);
     }
 
-    private int getContactCount() {
-        return driver.findElements(By.cssSelector("[name='selected[]']")).size();
+    @Test
+    public void deletionContactLastInTheList() {
+        int before = getContactsCount();
 
+        if(!isContactPresent()){
+            createContact();
+        }
+
+        selectContactByIndex(before -1);
+        initContactDeletion();
+        confirmAlert();
+        int after = getContactsCount();
+        System.out.println("before: "+ before + " " + "after: " + after);
+        Assert.assertEquals(after, before -1);
     }
+    
 }
