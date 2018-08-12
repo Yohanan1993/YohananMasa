@@ -1,5 +1,6 @@
-package com.telran.example;
+package com.telran.example.tests;
 
+import com.telran.example.manager.ApplicationMaanger;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 

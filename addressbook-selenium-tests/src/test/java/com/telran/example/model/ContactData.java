@@ -1,12 +1,11 @@
-package com.telran.example;
+package com.telran.example.model;
 
 public class ContactData {
-    private  String firstName;
-    private  String lastName;
-    private  String address;
-    private  String homePhone;
-    private  String email;
-
+    private String firstName;
+    private String lastName;
+    private String address;
+    private String homePhone;
+    private String email;
 
 
     public ContactData withFirstName(String firstName) {
